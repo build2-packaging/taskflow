@@ -19,6 +19,12 @@ lib{taskflow}:
   cxx.export.libs = $intf_libs
 }
 
+if ($cxx.target.system != 'win32-msvc')
+{
+  cxx.libs += -pthread
+  lib{taskflow}: cxx.export.libs += -pthread
+}
+
 # Install into the taskflow/ subdirectory of, say, /usr/include/
 # recreating subdirectories.
 #
