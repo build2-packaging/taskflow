@@ -1,6 +1,6 @@
 : 1
 name: libtaskflow-tests
-version: 3.10.0-a.0.z
+version: 3.10.0
 type: exe
 language: c++
 project: taskflow
