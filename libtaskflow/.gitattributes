@@ -1,0 +1,6 @@
+taskflow/algorithm symlink=dir
+taskflow/core      symlink=dir
+taskflow/cuda      symlink=dir
+taskflow/dsl       symlink=dir
+taskflow/sycl      symlink=dir
+taskflow/utility   symlink=dir
