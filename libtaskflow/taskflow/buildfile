@@ -1,5 +1,7 @@
 intf_libs = # Interface dependencies.
-#import xxxx_libs += libhello%lib{hello}
+
+if($config.libtaskflow.cuda)
+  import intf_libs += cuda-nvcc%liba{nvcc}
 
 lib{taskflow}: {hxx ixx txx}{**} $intf_libs
 
@@ -11,7 +13,9 @@ cxx.poptions =+ "-I$out_root" "-I$src_root"
 #
 lib{taskflow}:
 {
-  cxx.export.poptions = "-I$out_root" "-I$src_root"
+  cxx.export.poptions = "-I$out_root" "-I$src_root" \
+    ($config.libtaskflow.task_pool       ? -DTF_ENABLE_TASK_POOL :) \
+    ($config.libtaskflow.atomic_notifier ? -DTF_ENABLE_ATOMIC_NOTIFIER :)
   cxx.export.libs = $intf_libs
 }
 

@@ -1,16 +1,21 @@
 : 1
 name: libtaskflow
-version: 0.1.0-a.0.z
+version: 3.10.0-a.0.z
 type: lib,binless
 language: c++
 project: taskflow
-summary: Img align="right" width="10%" src="image/taskflow_logo
+summary: A General-purpose Task-parallel Programming System
 license: MIT ; MIT License.
 description-file: README.md
 package-description-file: PACKAGE-README.md
-url: https://example.org/upstream
-email: upstream@example.org
+url: https://github.com/taskflow/taskflow
+email: twh760812@gmail.com ; Author
 package-url: https://github.com/build2-packaging/taskflow
 package-email: packaging@build2.org ; Mailing list.
 depends: * build2 >= 0.17.0
 depends: * bpkg >= 0.17.0
+
+depends: cuda-nvcc ^13.0.1 ? ($config.libtaskflow.cuda)
+
+requires: c++20 ? ($config.libtaskflow.atomic_notifier)
+requires: c++17 ? ($config.libtaskflow.cuda)

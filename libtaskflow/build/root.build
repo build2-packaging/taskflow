@@ -14,3 +14,10 @@ cxx{*}: extension = cpp
 # The test target for cross-testing (running tests under Wine, etc).
 #
 test.target = $cxx.target
+
+# From upstream (see ../taskflow/taskflow.hpp):
+config [bool] config.libtaskflow.task_pool       ?= true
+config [bool] config.libtaskflow.atomic_notifier ?= ($cxx.std >= 20)
+
+# Implied by upstream depending on feature requirements:
+config [bool] config.libtaskflow.cuda ?= false
