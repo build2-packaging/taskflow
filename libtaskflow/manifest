@@ -1,0 +1,16 @@
+: 1
+name: libtaskflow
+version: 0.1.0-a.0.z
+type: lib,binless
+language: c++
+project: taskflow
+summary: Img align="right" width="10%" src="image/taskflow_logo
+license: MIT ; MIT License.
+description-file: README.md
+package-description-file: PACKAGE-README.md
+url: https://example.org/upstream
+email: upstream@example.org
+package-url: https://github.com/build2-packaging/taskflow
+package-email: packaging@build2.org ; Mailing list.
+depends: * build2 >= 0.17.0
+depends: * bpkg >= 0.17.0

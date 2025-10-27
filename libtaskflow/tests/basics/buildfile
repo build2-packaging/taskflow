@@ -1,0 +1,3 @@
+import libs = libtaskflow%lib{taskflow}
+
+exe{driver}: {hxx ixx txx cxx}{**} $libs testscript{**}
