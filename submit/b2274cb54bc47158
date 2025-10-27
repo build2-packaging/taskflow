@@ -1,0 +1,8 @@
+: 1
+name: libtaskflow-tests
+version: 3.10.0
+type: exe
+language: c++
+project: taskflow
+summary: A General-purpose Task-parallel Programming System; tests
+license: MIT; MIT License.
