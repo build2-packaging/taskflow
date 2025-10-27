@@ -1,0 +1,19 @@
+: 1
+name: libtaskflow-tests
+version: 3.10.0-a.0.z
+type: exe
+language: c++
+project: taskflow
+summary: A General-purpose Task-parallel Programming System; tests
+license: MIT ; MIT License.
+description-file: README.md
+package-description-file: PACKAGE-README.md
+url: https://github.com/taskflow/taskflow
+email: twh760812@gmail.com ; Author
+package-url: https://github.com/build2-packaging/taskflow
+package-email: packaging@build2.org ; Mailing list.
+depends: * build2 >= 0.17.0
+depends: * bpkg >= 0.17.0
+
+depends: libtaskflow == $
+depends: doctest ^2.4.7

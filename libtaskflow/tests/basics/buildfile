@@ -1,3 +1,7 @@
 import libs = libtaskflow%lib{taskflow}
 
-exe{driver}: {hxx ixx txx cxx}{**} $libs testscript
+for t : cxx{*}
+{
+  n = $name($t)
+  ./exe{$n}: $t $libs testscript
+}

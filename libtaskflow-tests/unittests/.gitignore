@@ -1,0 +1,7 @@
+libtaskflow-tests
+*.test
+
+# Testscript output directory (can be symlink).
+#
+test-libtaskflow-tests
+test-*.test

@@ -17,6 +17,8 @@ lib{taskflow}:
     ($config.libtaskflow.task_pool       ? -DTF_ENABLE_TASK_POOL :) \
     ($config.libtaskflow.atomic_notifier ? -DTF_ENABLE_ATOMIC_NOTIFIER :)
   cxx.export.libs = $intf_libs
+
+  libtaskflow.cuda = [bool] $config.libtaskflow.cuda
 }
 
 if ($cxx.target.system != 'win32-msvc')

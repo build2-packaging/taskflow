@@ -1,0 +1,16 @@
+libs =
+import libs += \
+  libtaskflow%lib{taskflow} \
+  doctest%lib{doctest}
+
+# See upstream CMakeLists.txt for upstream-disabled tests.
+for t: cxx{test_* -test_serializer.cpp -test_exceptions.cpp -test_priorities.cpp}
+{
+  d = $directory($t)
+  n = $name($t)...
+
+  ./: $d/exe{$n}: $t $d/{hxx ixx txx}{+$n} $d/testscript
+  $d/exe{$n}: hxx{doctest.h} $libs
+}
+
+cxx.poptions =+ "-I$out_root" "-I$src_base"
