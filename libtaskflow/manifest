@@ -1,6 +1,6 @@
 : 1
 name: libtaskflow
-version: 3.10.0
+version: 3.10.0+1
 type: lib,binless
 language: c++
 project: taskflow
