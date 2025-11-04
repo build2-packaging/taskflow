@@ -1,16 +1,44 @@
 libs =
+import taskflow = libtaskflow%lib{taskflow}
 import libs += \
-  libtaskflow%lib{taskflow} \
+  $taskflow \
   doctest%lib{doctest}
 
+define cu: cxx
+cu{*}: extension = cu
+
 # See upstream CMakeLists.txt for upstream-disabled tests.
-for t: cxx{test_* -test_serializer.cpp -test_exceptions.cpp -test_priorities.cpp}
+for t: cxx{test_* \
+            -test_serializer.cpp \
+            -test_exceptions.cpp \
+            -test_priorities.cpp \
+          }
 {
   d = $directory($t)
   n = $name($t)...
 
   ./: $d/exe{$n}: $t $d/{hxx ixx txx}{+$n} $d/testscript
   $d/exe{$n}: hxx{doctest.h} $libs
+}
+
+# See upstream cuda/CMakeLists.txt for upstream-disabled tests.
+for t: cuda/cu{test_* \
+                -test_cuda_reduce \
+                -test_cuda_scan \
+                -test_cuda_find \
+                -test_cuda_min_max_element \
+                -test_cuda_merge \
+                -test_cuda_capturer_optimizer \
+                -test_cuda_capture \
+                -cuda_algorithms \
+                -cuda_algorithm_updates \
+              }
+{
+  d = $directory($t)
+  n = $name($t)...
+
+  ./: $d/exe{$n}: include = $($taskflow: libtaskflow.cuda)
+  $d/exe{$n}: $t $d/{hxx ixx txx}{+$n} hxx{doctest.h} $libs $d/../testscript
 }
 
 cxx.poptions =+ "-I$out_root" "-I$src_base"
