@@ -1,7 +1,8 @@
 intf_libs = # Interface dependencies.
 
 if($config.libtaskflow.cuda)
-  import intf_libs += cuda-nvcc%liba{nvcc}
+  import intf_libs += \
+    cuda-cudart%libs{cudart}
 
 lib{taskflow}: {hxx ixx txx}{**} $intf_libs
 
